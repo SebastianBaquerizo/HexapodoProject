@@ -1,0 +1,94 @@
+# Cualquier línea que comience con # es un comentario.
+# Nombres de servos: L11 L12 ... L33 R11 ... R32 R33
+# Nombres de pines: P0 ... Pn en la tarjeta (P)rincipal
+# Nombres de pines: S0 ... Sn en la tarjeta (S)ecundaria
+
+# Pines de servos y valores de calibración de servos
+#
+# Formato: [Nombre del servo] [Nombre del pin] [-45 usec] [+45 usec]
+L11 P15 2000 1000
+L12 P16 2000 1000
+L13 P17 2000 1000
+L21 P09 2000 1000
+L22 P10 2000 1000
+L23 P11 2000 1000
+L31 P03 2000 1000
+L32 P04 2000 1000
+L33 P05 2000 1000
+R11 P12 2000 1000
+R12 P13 2000 1000
+R13 P14 2000 1000
+R21 P06 2000 1000
+R22 P07 2000 1000
+R23 P08 2000 1000
+R31 P00 2000 1000
+R32 P01 2000 1000
+R33 P02 2000 1000
+
+# Pines de sensores táctiles
+# Eliminar la definición de un sensor desactivará ese sensor.
+#
+# Formato: [Nombre del sensor táctil] [Nombre del pin] [Activo en Alto: 0 o 1]
+TS_L1 P23 1
+TS_L2 P21 1
+TS_L3 P19 1
+TS_R1 P22 1
+TS_R2 P20 1
+TS_R3 P18 1
+
+# Pines de sensores de voltaje y corriente y valores de calibración
+# Eliminar la definición de un sensor desactivará ese sensor.
+#
+# Formato: [Nombre del sensor] [Nombre del pin] [Voltaje de pin para leer 0] [Voltaje de pin para leer 1]
+CUR P24 0 0
+VOL P25 0 0
+
+# Niveles de advertencia y apagado para voltaje y corriente.
+# Los niveles son límites superiores para la corriente y límites inferiores para el voltaje.
+# La advertencia/apagado se activará si la lectura permanece en ese nivel durante más de
+# "Duración de activación" segundos.
+#
+# Formato: [Nombre del sensor] [Duración de activación] [Nivel de advertencia] [Nivel de apagado] [Número de pitidos]
+WARN_CUR 2 8 10 3
+WARN_VOL 2 6.4 6 3
+
+# Interruptor de relé para la alimentación principal de los servos
+# Elimina esta línea si no tienes un relé.
+#
+# Formato: [Salida] [Nombre del pin] [Activo en Alto: 0 o 1]
+RELAY P26 1
+
+# Colocación de las patas y configuraciones de animación
+#
+# Formato: [Nombre del modo] [Radio de la pata] [Ángulo de la pata en la esquina] [Elongación] [Elevación del cuerpo]
+#         [Elevación del paso] [Corrección sensores táctiles verticales] [Factor de velocidad] [Factor de animación]
+MODE_STANDARD  220 55 1.15  40 40  10 1.0 1.0
+MODE_RACE      210 55 1.20  35 30   0 2.0 0.0
+MODE_OFFROAD   230 55 1.15  60 99 120 0.6 1.0
+MODE_CUSTOM    220 55 1.15  40 40  10 1.0 1.0
+MODE_QUADRUPED 220 60 1.00  45 35   0 0.8 1.0
+MODE_BLOCK     185 30 1.07 -40 80   0 1.0 1.0
+
+# Longitud de los segmentos de las patas en milímetros
+COXA_LEN 43
+FEMUR_LEN 80
+TIBIA_LEN 134
+
+# Distancia entre los centros de rotación de la coxa de diferentes patas en milímetros.
+L1_TO_R1 126
+L1_TO_L3 167
+L2_TO_R2 163
+
+# Altura donde las patas se conectan al chasis.
+LEG_CONNECTION_Z -10
+# Valor Z para las puntas de las patas cuando están apoyadas en una superficie plana.
+LEG_SITTING_Z -40
+
+# Ángulo entre el propio servo y el segmento de la pata cuando el servo está centrado.
+COXA_ATTACH_ANGLE -8
+FEMUR_ATTACH_ANGLE 35
+TIBIA_ATTACH_ANGLE 68
+
+
+
+# esto es intencional.
