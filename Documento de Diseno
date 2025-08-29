@@ -1,0 +1,93 @@
+# ESCUELA SUPERIOR POLITÉCNICA DEL LITORAL  
+
+## FACULTAD DE INGENIERÍA EN ELECTRICIDAD Y COMPUTACIÓN  
+
+### Proyecto:  
+**Robot Hexápodo con Control Remoto vía WiFi usando ESP32 en Modo Access Point**
+
+### Participantes:  
+- Juan Sebastian Baquerizo Pinzón  
+- Guillermo Andrés Mendoza Cornejo *(Estudiante del Ing. Solís)*  
+
+### Tema:  
+Robot Hexápodo con Control Remoto vía WiFi usando ESP32 en Modo Access Point  
+
+**Agosto – 2025**
+
+---
+
+## Introducción  
+El presente documento describe el diseño técnico de un robot hexápodo controlado remotamente vía WiFi, cuyo núcleo de procesamiento está basado en un microcontrolador ESP32 operando en modo Access Point (AP). El objetivo principal del proyecto es construir un sistema robótico autónomo, capaz de recibir comandos de control desde una interfaz web alojada localmente, y ejecutar movimientos coordinados en sus seis patas mediante 18 servomotores de precisión.  
+
+El sistema emplea un controlador Servo2040 como dispositivo esclavo, el cual se comunica con la ESP32 mediante el protocolo SPI, con el propósito de manejar eficientemente los servos sin sobrecargar el procesador principal. Además, se integran sensores tipo micro-switch en las patas del robot para detectar contacto con la superficie, permitiendo validar la estabilidad y dar retroalimentación al sistema.  
+
+La estructura mecánica del hexápodo será fabricada mediante impresión 3D en PLA, y se alimentará de forma autónoma mediante una batería LiPo de 6200 mAh, garantizando movilidad sin restricciones.  
+
+Este desarrollo busca integrar conocimientos de sistemas embebidos, control de actuadores, comunicación inalámbrica y monitoreo remoto, con un enfoque educativo, escalable y de bajo costo.  
+
+---
+
+## Alcance y Limitaciones  
+
+### Alcance  
+- Control remoto mediante una interfaz web alojada en la ESP32 (modo Access Point).  
+- Comunicación por SPI entre la ESP32 y el controlador Servo2040 para ejecutar movimientos.  
+- Integración de sensores de contacto (limit switches) para detectar pisada.  
+- Alimentación autónoma con batería LiPo de 6200 mAh y control de encendido con relé.  
+
+### Limitaciones  
+- No se utilizarán sensores de visión ni procesamiento de imágenes.  
+- No contempla algoritmos avanzados de locomoción o aprendizaje automático.  
+- La estructura física será impresa en PLA, sin resistencia a impactos o condiciones extremas.  
+
+---
+
+## Diagramas   
+
+- **Diagrama de contexto**  
+
+- **Diagrama de bloques del diseño**  
+- **Diagrama de software o máquinas de estados**  
+- **Diseño de interfaces**  
+
+---
+
+## Alternativas de Diseño  
+
+| Categoría | Opción | Pros | Contras |
+|-----------|--------|------|---------|
+|  Servos   | MG996R | Muy económicos y fáciles de conseguir | Alta variabilidad de calidad |
+|           | Dynamixel AX-12A | Actuador “inteligente”: comunicación en bus, feedback | Coste alto, requiere 9–12 V |
+|  Cerebro  | ESP32 | Wi-Fi integrado, modo AP, buen costo/rendimiento | RAM limitada |
+|           | Raspberry Pi Zero 2 W | Wi-Fi/BLE integrados | Mayor consumo, gestión de SO |
+| Método de | Wi-Fi en modo AP | Sin emparejar; control directo desde navegador/app | Alcance típico < 30 m |
+|  control  | Bluetooth clásico | Muy barato; configuración sencilla | Emparejamiento requerido, corto alcance |
+
+---
+
+## Justificaciones de selección  
+
+- **Servos – MG996R:** elegidos por ser económicos, fáciles de conseguir y con torque suficiente para una estructura ligera impresa en PLA.  
+- **Controlador – ESP32:** seleccionado por integrar Wi-Fi en modo AP, bajo costo y simplicidad en proyectos educativos, sin necesidad de módulos externos.  
+- **Comunicación – Wi-Fi AP:** permite controlar el robot directamente desde un navegador, sin emparejamientos ni red externa, lo que facilita la demostración y el uso académico.  
+
+---
+
+## Plan de Test y Validación  
+
+1. Verificación de servomotores (-45° a +45°) y comunicación SPI entre ESP32 y Servo2040.  
+2. Comprobación de relé y sensores de contacto en cada pata.  
+3. Validación de conexión WiFi (modo AP) y acceso desde celular.  
+4. Prueba de joysticks en interfaz web (avance/retroceso y giros).  
+5. Evaluación de estabilidad general en caminata y respuesta en tiempo real.  
+
+---
+
+## Consideraciones Éticas  
+
+El hexápodo está diseñado con fines educativos y de exploración técnica, pero como todo sistema robótico, su mal uso podría implicar riesgos.  
+- Se recomienda configurar el Access Point con contraseña segura (WPA2) para evitar accesos no autorizados.  
+- Uso responsable: evitar entornos donde pueda causar daños, violar privacidad o usarse con fines maliciosos.  
+- Alcance limitado a control manual y monitoreo básico para fomentar aplicaciones educativas, recreativas o experimentales.  
+
+---
